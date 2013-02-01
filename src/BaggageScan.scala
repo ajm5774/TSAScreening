@@ -11,11 +11,11 @@ class BaggageScan (val securityStation: ActorRef, val lineNumber: Int) extends A
       var rand = new Random()
 	  if(rand.nextInt(99)+1 > FAILURE_RATE){
 		  println(name + " passed security at baggage scan " + lineNumber)
-		  securityStation ! SecurityStatus(name,true)
+		  securityStation ! SecurityStatus(name,true,true)
 	  }
 	  else{
 		  println(name + " failed security at baggage scan " + lineNumber)
-		  securityStation ! SecurityStatus(name,false)
+		  securityStation ! SecurityStatus(name,true,false)
 	  }
   }
 }

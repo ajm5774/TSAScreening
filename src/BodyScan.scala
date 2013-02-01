@@ -11,11 +11,11 @@ class BodyScan (val securityStation: ActorRef, val lineNumber: Int) extends Acto
       var rand = new Random()
 	  if(rand.nextInt(99)+1 > FAILURE_RATE){
 		  println(name + " passed security at body scan " + lineNumber)
-		  securityStation ! SecurityStatus(name,true)
+		  securityStation ! SecurityStatus(name,false,true)
 	  }
 	  else{
 		  println(name + " failed security at body scan " + lineNumber)
-		  securityStation ! SecurityStatus(name,false)
+		  securityStation ! SecurityStatus(name,false,false)
 	  }
   }
 }
