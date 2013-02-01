@@ -1,4 +1,5 @@
 import akka.actor.Actor
+import akka.actor.PoisonPill
 import akka.actor.ActorRef
 import scala.util.Random
 
@@ -17,5 +18,8 @@ class BodyScan (val securityStation: ActorRef, val lineNumber: Int) extends Acto
 		  println(name + " failed security at body scan " + lineNumber)
 		  securityStation ! SecurityStatus(name,false,false)
 	  }
+  }
+  override def postStop = {
+     securityStation ! PoisonPill
   }
 }

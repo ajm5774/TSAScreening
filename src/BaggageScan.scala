@@ -1,5 +1,6 @@
 import akka.actor.Actor
 import akka.actor.ActorRef
+import akka.actor.PoisonPill
 import scala.util.Random
 
 class BaggageScan (val securityStation: ActorRef, val lineNumber: Int) extends Actor{
@@ -17,5 +18,9 @@ class BaggageScan (val securityStation: ActorRef, val lineNumber: Int) extends A
 		  println(name + " failed security at baggage scan " + lineNumber)
 		  securityStation ! SecurityStatus(name,true,false)
 	  }
+  }
+  
+  override def postStop = {
+     securityStation ! PoisonPill
   }
 }

@@ -1,4 +1,5 @@
 import akka.actor.ActorRef
+import akka.actor.PoisonPill
 import akka.actor.Actor
 import scala.util.Random
 import scala.Array
@@ -23,4 +24,10 @@ class DocumentCheck (val queues : Array[ActorRef]) extends Actor{
 	    println(name + "Failed the document check")	  
 	  }
   }
+	
+	override def postStop = {
+	  for(ref <- queues){
+	    ref ! PoisonPill
+	  }
+	}
 }
