@@ -1,0 +1,1 @@
+case class SecurityStatus (name: String, status: Boolean)
