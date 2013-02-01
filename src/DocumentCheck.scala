@@ -5,14 +5,14 @@ import scala.Array
 import scala.Int
 
 class DocumentCheck (val queues : Array[ActorRef]) extends Actor{
-	private final val FAILURE_RATE = 20
+	private val FAILURE_RATE = 20
 	private var inc = 1
   
   def receive = {
 
-    case(name : String)=>
+    case name : String =>
       println(name + "Arrived at the document check")
-	  val rand = new Random()
+	  var rand = new Random()
 	  if(rand.nextInt(99)+1 > FAILURE_RATE){
 		println(name + "Passed the document check")
 	    queues(inc) ! name
