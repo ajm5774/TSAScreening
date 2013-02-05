@@ -1,4 +1,5 @@
 import akka.actor.Actor
+import akka.actor.PoisonPill
 import akka.actor.ActorRef
 import scala.collection.mutable.HashMap
 
@@ -24,7 +25,11 @@ class SecurityStation (val jail: ActorRef, val lineNumber: Int) extends Actor{
         }
       }
       else{
-        passengerStatus + name -> status
+        passengerStatus += name -> status
       }
+  }
+	
+  override def postStop = {
+     jail ! PoisonPill
   }
 }

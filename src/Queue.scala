@@ -1,4 +1,5 @@
 import akka.actor.ActorRef
+import akka.actor.PoisonPill
 import akka.actor.Actor
 
 class Queue (val bodyScan: ActorRef, val baggageScan: ActorRef,
@@ -6,7 +7,7 @@ class Queue (val bodyScan: ActorRef, val baggageScan: ActorRef,
 	
 	def receive = {
 	  case name: String =>
-	  	println(name + "Arrived at queue " + lineNumber)
+	  	println(name + " arrived at queue " + lineNumber)
 	  	
 	  	println("Sending " + name + " to body scan " + lineNumber)
 	  	bodyScan ! name
@@ -14,4 +15,9 @@ class Queue (val bodyScan: ActorRef, val baggageScan: ActorRef,
 	  	println("Sending " + name + "'s baggage to baggage scan " + lineNumber)
 	  	baggageScan ! name
 	}
+	
+	override def postStop = {
+     bodyScan ! PoisonPill
+     baggageScan ! PoisonPill
+  }
 }

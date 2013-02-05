@@ -12,16 +12,16 @@ class DocumentCheck (val queues : Array[ActorRef]) extends Actor{
   def receive = {
 
     case name : String =>
-      println(name + "Arrived at the document check")
+      println(name + " arrived at the document check")
 	  var rand = new Random()
 	  if(rand.nextInt(99)+1 > FAILURE_RATE){
-		println(name + "Passed the document check")
+		println(name + " passed the document check")
 	    queues(inc) ! name
 	    inc += 1
 	    inc %= queues.length
 	  }
 	  else{
-	    println(name + "Failed the document check")	  
+	    println(name + " failed the document check")	  
 	  }
   }
 	
