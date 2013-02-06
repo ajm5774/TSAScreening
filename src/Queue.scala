@@ -17,6 +17,7 @@ class Queue (val bodyScan: ActorRef, val baggageScan: ActorRef,
 	}
 	
 	override def postStop = {
+	  println("Queue " + lineNumber + " closed for the day")
      bodyScan ! PoisonPill
      baggageScan ! PoisonPill
   }

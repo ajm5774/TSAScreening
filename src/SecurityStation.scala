@@ -4,7 +4,10 @@ import akka.actor.ActorRef
 import scala.collection.mutable.HashMap
 
 class SecurityStation (val jail: ActorRef, val lineNumber: Int) extends Actor{
-	var passengerStatus = new HashMap[String, Boolean]
+	private var passengerStatus = new HashMap[String, Boolean]
+	
+	private var numScansClosed = 0;
+	
   def receive = {
     case SecurityStatus(name,baggage, status)=>
       
@@ -27,9 +30,15 @@ class SecurityStation (val jail: ActorRef, val lineNumber: Int) extends Actor{
       else{
         passengerStatus += name -> status
       }
+    case Kill =>
+      numScansClosed += 1
+      if(numScansClosed ==2){
+        self.stop()
+      }
   }
 	
   override def postStop = {
-     jail ! PoisonPill
+    println("Security Station " + lineNumber + " closed for the day")
+     jail ! Kill
   }
 }

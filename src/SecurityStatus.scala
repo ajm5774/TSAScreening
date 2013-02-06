@@ -1,1 +1,0 @@
-case class SecurityStatus (name: String, baggage: Boolean, status: Boolean)

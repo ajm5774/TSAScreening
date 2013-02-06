@@ -21,6 +21,7 @@ class BaggageScan (val securityStation: ActorRef, val lineNumber: Int) extends A
   }
   
   override def postStop = {
-     securityStation ! PoisonPill
+    println("Baggage Scan " + lineNumber + " closed for the day")
+     securityStation ! Kill
   }
 }

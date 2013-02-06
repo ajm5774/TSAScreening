@@ -7,7 +7,7 @@ import scala.Int
 
 class DocumentCheck (val queues : Array[ActorRef]) extends Actor{
 	private val FAILURE_RATE = 20
-	private var inc = 1
+	private var inc = 0
   
   def receive = {
 
@@ -26,6 +26,7 @@ class DocumentCheck (val queues : Array[ActorRef]) extends Actor{
   }
 	
 	override def postStop = {
+	  println("Document Check closed for the day")
 	  for(ref <- queues){
 	    ref ! PoisonPill
 	  }

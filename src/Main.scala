@@ -2,6 +2,10 @@ import akka.actor.ActorRef
 import akka.actor.Actor
 import akka.actor.PoisonPill
 
+case class SecurityStatus (name: String, baggage: Boolean, status: Boolean)
+case class Kill
+
+
 object Main {
 	private final val NUM_PASSENGERS = 10
 	private final val NUM_LINES = 3
@@ -9,7 +13,7 @@ object Main {
 	
   def main (args : Array[String]) : Unit = {
 	//creating jail
-    var jail = Actor.actorOf(new Jail(NUM_PASSENGERS)).start();
+    var jail = Actor.actorOf(new Jail(NUM_LINES)).start();
     
     //creating security lines (queues)
     var lines = new Array[ActorRef](NUM_LINES)
@@ -31,12 +35,14 @@ object Main {
     
     //creating document check
     var documentCheck = Actor.actorOf(new DocumentCheck(lines)).start()
-    
+    println("Start of the day")
+   
     
     //send all the passengers to the document check
     for(i <- 0 until NUM_PASSENGERS){
       documentCheck ! ("Passenger " + i)
     }
+    
     
     //kill all actors
     documentCheck ! PoisonPill

@@ -20,6 +20,7 @@ class BodyScan (val securityStation: ActorRef, val lineNumber: Int) extends Acto
 	  }
   }
   override def postStop = {
-     securityStation ! PoisonPill
+     println("Body Scan " + lineNumber + " closed for the day")
+     securityStation ! Kill
   }
 }
