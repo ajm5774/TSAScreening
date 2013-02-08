@@ -16,6 +16,7 @@ class Queue (val bodyScan: ActorRef, val baggageScan: ActorRef,
 	  	baggageScan ! name
 	}
 	
+	//sends a kill message to the next actors in the sequence (both scans)
 	override def postStop = {
 	  println("Queue " + lineNumber + " closed for the day")
      bodyScan ! PoisonPill

@@ -11,6 +11,7 @@ class SecurityStation (val jail: ActorRef, val lineNumber: Int) extends Actor{
   def receive = {
     case SecurityStatus(name,baggage, status)=>
       
+      //prints a different message if its baggage that arrives or not
       if(baggage){
     	  println(name + "'s baggage arrived at the security station")  
       }
@@ -18,18 +19,27 @@ class SecurityStation (val jail: ActorRef, val lineNumber: Int) extends Actor{
       	  println(name + " arrived at the security station") 
       }
       
+      /*
+       * Checks if the baggage or passenger has come to the security station.
+       *  already. If it hasnt then it records that the baggage or passenger 
+       *  arrived. If the baggage or passenger arrived previously, then the
+       *  security status is processed. The status is failed if either the
+       *  baggage or passenger failed their corresponding scan.
+       */
       if (passengerStatus.contains(name)){
         if(passengerStatus(name) && status){
-          println(name + " passed the TSA screening")
+          println(name + " passed the TSA screening and is leaving the security area")
         }
         else{
-          println(name + " failed the TSA screening")
+          println(name + " failed the TSA screening and is sent to jail")
           jail ! name
         }
       }
       else{
         passengerStatus += name -> status
       }
+    
+      //the kill message stops the actor if both the scans stop.
     case Kill =>
       numScansClosed += 1
       if(numScansClosed ==2){
@@ -37,6 +47,7 @@ class SecurityStation (val jail: ActorRef, val lineNumber: Int) extends Actor{
       }
   }
 	
+  //sends a kill message to the next actor in the line (jail)
   override def postStop = {
     println("Security Station " + lineNumber + " closed for the day")
      jail ! Kill

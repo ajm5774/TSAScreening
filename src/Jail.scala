@@ -9,6 +9,8 @@ class Jail (val numLines : Int) extends Actor{
 	  case name : String =>
 	    println(name + " has entered the jail.")
 	    patrons ::= name
+	    
+	  //only stops the actor if all lines close
 	  case Kill =>
 	    numShutdown += 1
 	    if(numShutdown == numLines){
@@ -16,6 +18,7 @@ class Jail (val numLines : Int) extends Actor{
 	    }
 	}
 	
+	//Patrons go to a permanent detention facility at the end of the day
 	override def postStop = {
 	  println("Jail closed for the day")
      for(patron <- patrons){
