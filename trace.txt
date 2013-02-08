@@ -1,0 +1,151 @@
+Start of the day                                                                       # At the start of the day, the whole system is started up
+Jail is started.
+Security Station 0 is started.
+Body Scan 0 is started.
+Baggage Scan 0 is started.
+Queue 0 is started.
+Security Station 1 is started.
+Body Scan 1 is started.
+Baggage Scan 1 is started.
+Queue 1 is started.
+Security Station 2 is started.
+Body Scan 2 is started.
+Baggage Scan 2 is started.
+Queue 2 is started.
+Document Check is started.
+Passenger 0 arrived at the document check.                                             # Passengers start arriving after everything has been set up
+Passenger 0 passed the document check and is sent to queue 0.
+Passenger 1 arrived at the document check.
+Passenger 1 passed the document check and is sent to queue 1.
+Passenger 2 arrived at the document check.
+Passenger 2 passed the document check and is sent to queue 2.
+Passenger 3 arrived at the document check.
+Passenger 3 passed the document check and is sent to queue 0.                          # After the last line, Document Check sends passenger to the first one
+Passenger 4 arrived at the document check.
+Passenger 4 passed the document check and is sent to queue 1.
+Passenger 5 arrived at the document check.
+Passenger 5 passed the document check and is sent to queue 2.
+Passenger 6 arrived at the document check.
+Passenger 6 passed the document check and is sent to queue 0.
+Passenger 1 arrived at queue 1.
+Passenger 7 arrived at the document check.
+Passenger 2 arrived at queue 2.
+Passenger 0 arrived at queue 0.
+Sending Passenger 2 to body scan 2.
+Passenger 7 failed the document check and is not passed to a queue.                    # If the passenger fails the document check, they are stopped
+Sending Passenger 1 to body scan 1.
+Passenger 8 arrived at the document check.
+Sending Passenger 0 to body scan 0.
+Passenger 8 passed the document check and is sent to queue 1.                          # The next passenger that passes document check is sent to the next line appropriately
+Sending Passenger 2's baggage to baggage scan 2.                                       # Passengers and their baggage may arrive at the scanners at a different time
+Sending Passenger 1's baggage to baggage scan 1.
+Passenger 9 arrived at the document check.                                             # Passenger can arrive at any time of the day
+Passenger 9 passed the document check and is sent to queue 2.
+Sending Passenger 0's baggage to baggage scan 0.
+Passenger 5 arrived at queue 2.
+Sending Passenger 5 to body scan 2.
+Passenger 3 arrived at queue 0.
+Sending Passenger 3 to body scan 0.
+Sending Passenger 3's baggage to baggage scan 0.
+Sending Passenger 5's baggage to baggage scan 2.
+Passenger 6 arrived at queue 0.
+Passenger 9 arrived at queue 2.
+Sending Passenger 6 to body scan 0.
+Sending Passenger 9 to body scan 2.
+Sending Passenger 9's baggage to baggage scan 2.
+Passenger 4 arrived at queue 1.
+Sending Passenger 4 to body scan 1.
+Sending Passenger 4's baggage to baggage scan 1.
+Passenger 8 arrived at queue 1.
+Sending Passenger 8 to body scan 1.
+Sending Passenger 8's baggage to baggage scan 1.
+Sending Passenger 6's baggage to baggage scan 0.
+Passenger 2 arrived at body scan 2.
+Passenger 2 failed security at body scan 2 and is sent to the security station.
+Passenger 1 arrived at baggage scan 1.
+Passenger 0 arrived at baggage scan 0.
+Passenger 1 passed security at baggage scan 1 and is sent to the security station.
+Passenger 0 failed security at baggage scan 0 and is sent to the security station.
+Passenger 0 arrived at body scan 0.
+Passenger 0 passed security at body scan 0 and is sent to the security station.
+Passenger 2 arrived at baggage scan 2.
+Passenger 1 arrived at body scan 1.
+Passenger 2 passed security at baggage scan 2 and is sent to the security station.
+Passenger 1 passed security at body scan 1 and is sent to the security station.
+Passenger 4 arrived at baggage scan 1.
+Passenger 4 failed security at baggage scan 1 and is sent to the security station.
+Passenger 8 arrived at baggage scan 1.
+Passenger 8 failed security at baggage scan 1 and is sent to the security station.
+Passenger 4 arrived at body scan 1.
+Passenger 4 passed security at body scan 1 and is sent to the security station.
+Passenger 8 arrived at body scan 1.
+Passenger 8 failed security at body scan 1 and is sent to the security station.
+Passenger 5 arrived at body scan 2.
+Passenger 5 passed security at body scan 2 and is sent to the security station.
+Passenger 9 arrived at body scan 2.
+Passenger 9 passed security at body scan 2 and is sent to the security station.
+Passenger 5 arrived at baggage scan 2.
+Passenger 5 failed security at baggage scan 2 and is sent to the security station.
+Passenger 9 arrived at baggage scan 2.
+Passenger 9 passed security at baggage scan 2 and is sent to the security station.
+Passenger 3 arrived at baggage scan 0.
+Passenger 3 arrived at body scan 0.
+Passenger 3 failed security at body scan 0 and is sent to the security station.
+Passenger 3 passed security at baggage scan 0 and is sent to the security station.
+Passenger 6 arrived at body scan 0.
+Passenger 6 arrived at baggage scan 0.
+Passenger 6 passed security at body scan 0 and is sent to the security station.
+Passenger 6 passed security at baggage scan 0 and is sent to the security station.
+Passenger 2 arrived at the security station.
+Passenger 1's baggage arrived at the security station.
+Passenger 0 arrived at the security station.
+Passenger 0's baggage arrived at the security station.
+Passenger 4's baggage arrived at the security station.
+Passenger 0 failed the TSA screening and is sent to jail.                              # Passenger 0 fails because of their baggage. They are sent to the jail.
+Passenger 5 arrived at the security station.
+Passenger 8's baggage arrived at the security station.
+Passenger 9 arrived at the security station.
+Passenger 1 arrived at the security station.
+Passenger 3 arrived at the security station.
+Passenger 2's baggage arrived at the security station.
+Passenger 3's baggage arrived at the security station.
+Passenger 1 passed the TSA screening and is leaving the security area.                 # Passenger 1 passes both scans so they can leave the system
+Passenger 3 failed the TSA screening and is sent to jail.
+Passenger 2 failed the TSA screening and is sent to jail.
+Passenger 6 arrived at the security station.
+Passenger 5's baggage arrived at the security station.
+Passenger 5 failed the TSA screening and is sent to jail.
+Passenger 9's baggage arrived at the security station.
+Passenger 9 passed the TSA screening and is leaving the security area.
+Passenger 4 arrived at the security station.
+Passenger 6's baggage arrived at the security station.
+Passenger 4 failed the TSA screening and is sent to jail.
+Passenger 6 passed the TSA screening and is leaving the security area.
+Passenger 8 arrived at the security station.
+Passenger 8 failed the TSA screening and is sent to jail.
+Passenger 0 has entered the jail.
+Passenger 3 has entered the jail.
+Passenger 2 has entered the jail.
+Passenger 5 has entered the jail.
+Passenger 4 has entered the jail.
+Passenger 8 has entered the jail.
+Document Check closed for the day.                                                     # At the end of the day and after all passengers are processed, the system starts shutting down in order
+Queue 0 closed for the day.
+Queue 2 closed for the day.
+Queue 1 closed for the day.
+Body Scan 0 closed for the day.
+Baggage Scan 0 closed for the day.
+Body Scan 2 closed for the day.
+Baggage Scan 2 closed for the day.
+Baggage Scan 1 closed for the day.
+Body Scan 1 closed for the day.
+Security Station 0 closed for the day.
+Security Station 1 closed for the day.
+Security Station 2 closed for the day.
+Jail closed for the day.                                                               # Jail is always the last to shut down
+Passenger 8 has left for a permanent detention facility.                               # All passengers in the jail are sent out of the system (to a detention facility)
+Passenger 4 has left for a permanent detention facility.
+Passenger 5 has left for a permanent detention facility.
+Passenger 2 has left for a permanent detention facility.
+Passenger 3 has left for a permanent detention facility.
+Passenger 0 has left for a permanent detention facility.
